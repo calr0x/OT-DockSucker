@@ -63,7 +63,7 @@ sudo pip3 install python-arango
 sudo pip3 install xmljson
 sudo pip3 install python-dotenv
 
-sudo apt-get install git
+sudo apt-get install git build-essential gcc python-dev
 
 git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
 cd ot-node && npm install
