@@ -156,21 +156,10 @@ cp "${temp_folder}/arangodb" ${CONFIGDIR}/
 echo rm -rf ${temp_folder}
 rm -rf ${temp_folder}
 
-echo start ${CONTAINER_NAME}
-start ${CONTAINER_NAME}
-
-echo sleep 30
-sleep 30
 
 cp ${CONFIGDIR}/arango.txt arango.txt
 databasePassword=$(cat arango.txt)
 rm arango.txt
 
 echo "exec ${CONTAINER_NAME} arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password \"${databasePassword}\" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true"
-exec ${CONTAINER_NAME} arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password "${databasePassword}" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true
-
-echo restart ${CONTAINER_NAME}
-restart ${CONTAINER_NAME}
-
-echo exec ${CONTAINER_NAME} rm -rf ${CONFIGDIR}/arangodb
-exec ${CONTAINER_NAME} rm -rf ${CONFIGDIR}/arangodb
+arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password "${databasePassword}" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true
