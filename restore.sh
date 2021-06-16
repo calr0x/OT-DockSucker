@@ -141,8 +141,6 @@ fi
 echo cp /ot-node/current/config/config.json ./
 cp /ot-node/current/config/config.json ./
 
-rm config.json
-
 databaseName=$(cat ${BACKUPDIR}/arangodb/database.txt)
 echo "database name ${databaseName}"
 
@@ -152,14 +150,8 @@ echo "database username ${databaseUsername}"
 echo "cp ${temp_folder}/arangodb ${CONFIGDIR}/"
 cp "${temp_folder}/arangodb" ${CONFIGDIR}/
 
-
-echo rm -rf ${temp_folder}
-rm -rf ${temp_folder}
-
-
 cp ${CONFIGDIR}/arango.txt arango.txt
 databasePassword=$(cat arango.txt)
-rm arango.txt
 
 echo "exec ${CONTAINER_NAME} arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password \"${databasePassword}\" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true"
 arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password "${databasePassword}" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true
