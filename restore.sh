@@ -153,5 +153,5 @@ cp "${temp_folder}/arangodb" ${CONFIGDIR}/
 cp ${CONFIGDIR}/arango.txt arango.txt
 databasePassword=$(cat arango.txt)
 
-echo "exec ${CONTAINER_NAME} arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password \"${databasePassword}\" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true"
-arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password "${databasePassword}" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true
+echo "exec arangorestore --server.database ${databaseName} --server.username ${databaseUsername} --server.password \"${databasePassword}\" --input-directory ${CONFIGDIR}/arangodb/ --overwrite true --create-database true"
+arangorestore --server.database origintrail --server.username root --server.password "password" --input-directory backup/arangodb/ --overwrite true --create-database true
