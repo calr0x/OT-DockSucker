@@ -4,8 +4,10 @@ source "/root/OT-Smoothbrain-Backup/config.sh"
 STATUS=$?
 N1=$'\n'
 
+cd /ot-node/current
+
 echo "Backing up OT Node data"
-node /otnode/current/scripts/backup.js --config=/ot-node/current/.origintrail_noderc --configDir=.origintrail_noderc/mainnet --backupDirectory=/root/backup  2>&1
+node /ot-node/current/scripts/backup.js --config=/ot-node/current/.origintrail_noderc --configDir=/root/.origintrail_noderc/mainnet --backupDirectory=/root/backup  2>&1
 echo $?
 if [ $? == 1 ]; then
   /root/OT-Smoothbrain-Backup/data/send.sh "OT docker backup command FAILED"
