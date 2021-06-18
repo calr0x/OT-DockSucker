@@ -12,12 +12,37 @@ if [ $? == 1 ]; then
   exit 1
 fi
 
+echo "Moving data out of dated folder into backup"
+mv -v /root/backup/202*/* /root/backup/ 2>&1
+echo $?
+if [ $? == 1 ]; then
+  /root/OT-Smoothbrain-Backup/data/send.sh "Moving data command FAILED"
+  exit 1
+fi
+
+echo "Moving hidden data out of dated folder into backup"
+mv -v /root/backup/*/.origintrail_noderc /root/backup/ 2>&1
+echo $?
+if [ $? == 1 ]; then
+  /root/OT-Smoothbrain-Backup/data/send.sh "Moving hidden data command FAILED"
+  exit 1
+fi
+
+
+echo "Deleting dated folder"
+rm -rf /root/backup/202* 2>&1
+echo $?
+if [ $? == 1 ]; then
+  /root/OT-Smoothbrain-Backup/data/send.sh "Deleting data folder command FAILED"
+  exit 1
+fi
+
 echo "Uploading data to Amazon S3"
-OUTPUT=$(/root/OT-Smoothbrain-Backup/restic backup /root/OT-Smoothbrain-Backup/backup/.origintrail_noderc /root/OT-Smoothbrain-Backup/backup/* 2>&1)
+OUTPUT=$(/root/OT-Smoothbrain-Backup/restic backup /root/backup/.origintrail_noderc /root/backup/* 2>&1)
 echo $OUTPUT
 if [ $? -eq 0 ]; then
   /root/OT-Smoothbrain-Backup/data/send.sh "Backup SUCCESSFUL:${N1}$OUTPUT"
-  rm -rf /root/OT-Smoothbrain-Backup/backup/* /root/OT-Smoothbrain-Backup/backup/.origintrail_noderc
+  rm -rf /root/backup/* /root/backup/.origintrail_noderc
 else
   /root/OT-Smoothbrain-Backup/data/send.sh "Uploading backup to S3 FAILED:${N1}$OUTPUT"
   exit 1
