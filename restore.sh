@@ -1,28 +1,28 @@
 #!/bin/bash
 function printUsage {
-	echo ""
-	echo "Usage:"
-	echo "    restore.sh [--backupDir=<backup_directory_path>] [--configDir=<config_directory_path>]"
-	echo "Options:"
-	echo "    --backupDir=<backup_directory_path>\
-	Specify the path to the folder containing the backup data on your device. Defaults to the folder with the most recent timestamp inside the backup/ directory"
-	echo "    --backupDir=<config_directory_path>
-	Specify the path to the folder inside the container where configuration files are stored. Defaults to /ot-node/data/"
-	echo ""
+        echo ""
+        echo "Usage:"
+        echo "    restore.sh [--backupDir=<backup_directory_path>] [--configDir=<config_directory_path>]"
+        echo "Options:"
+        echo "    --backupDir=<backup_directory_path>\
+        Specify the path to the folder containing the backup data on your device. Defaults to the folder with the most recent timestamp inside the backu$
+        echo "    --backupDir=<config_directory_path>
+        Specify the path to the folder inside the container where configuration files are stored. Defaults to /ot-node/data/"
+        echo ""
 }
 
 BACKUPDIR="/root/backup"
-CONFIGDIR="/root/.origintrail_noderc"
+CONFIGDIR="/root/.origintrail_noderc/mainnet"
 CONTAINER_NAME="otnode"
 
 if [ -d ${BACKUPDIR} ]
 then
-	echo "Using ${BACKUPDIR} as the backup directory"
-	echo ""
+        echo "Using ${BACKUPDIR} as the backup directory"
+        echo ""
 else
-	echo "Given backup directory parameter ${BACKUPDIR} is not a directory!"
-	printUsage
-	exit 1
+        echo "Given backup directory parameter ${BACKUPDIR} is not a directory!"
+        printUsage
+        exit 1
 fi
 
 temp_folder=$BACKUPDIR
@@ -33,7 +33,7 @@ for file in `ls ${BACKUPDIR}`; do
       sourcePath="${BACKUPDIR}/${file}"
       destinationPath="${CONFIGDIR}/"
 
-      sourcePath=./${temp_folder}/${file}
+      sourcePath=${temp_folder}/${file}
       echo "cp ${sourcePath} ${destinationPath}"
       cp ${sourcePath} ${destinationPath}
     fi
@@ -52,7 +52,7 @@ then
   destinationPath="${CONFIGDIR}/"
 
   echo "cp ${sourcePath} ${destinationPath}"
-  cp ${sourcePath} ${destinationPath}
+  cp -r ${sourcePath} ${destinationPath}
 fi
 
 #databaseName=$(cat ${BACKUPDIR}/arangodb/database.txt)
