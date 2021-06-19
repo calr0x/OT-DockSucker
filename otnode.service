@@ -1,0 +1,14 @@
+[Unit]
+Description=otnode - OriginTrail Node
+Documentation=https://github.com/calr0x/OT-DockSucker
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/ot-node/current
+ExecStart=/usr/bin/node --max-old-space-size=2048 ot-node.js
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
