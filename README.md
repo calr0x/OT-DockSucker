@@ -30,8 +30,6 @@ nano config/config.json
   ctrl+s/ctrl+x  
 ./scripts/update-arango-password.sh  
 
-cp /root/backup/.origintrail_noderc /ot-node/current/
-
 ---------------------------------------------------------------
 RESTORE DB BACKUP (Using SmoothBrain)
 
@@ -50,6 +48,7 @@ nano /root/backup/.origintrail_noderc
 **VERIFY THE IP NEEDS TO CHANGE/BE THE SAME**
 
 ctrl+s/ctrl+x  
+cp /root/backup/.origintrail_noderc /ot-node/current/  
 cd /root/OT-DockSucker  
 ./restore  
 rm -rf /root/backup/arangodb  
