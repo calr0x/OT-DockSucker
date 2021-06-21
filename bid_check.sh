@@ -8,7 +8,7 @@
 
 BID_INTERVAL="1h"
 
-BIDS=$(journalctl -u otnode.service --since "15 minutes ago" | grep Accepting | wc -l)
+BIDS=$(journalctl -u otnode.service --since "1 hour ago" | grep Accepting | wc -l)
 echo $BIDS
 
 if [ $BIDS -eq 0 ]; then
