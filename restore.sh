@@ -1,19 +1,7 @@
 #!/bin/bash
-function printUsage {
-        echo ""
-        echo "Usage:"
-        echo "    restore.sh [--backupDir=<backup_directory_path>] [--configDir=<config_directory_path>]"
-        echo "Options:"
-        echo "    --backupDir=<backup_directory_path>\
-        Specify the path to the folder containing the backup data on your device. Defaults to the folder with the most recent timestamp inside the backu$
-        echo "    --backupDir=<config_directory_path>
-        Specify the path to the folder inside the container where configuration files are stored. Defaults to /ot-node/data/"
-        echo ""
-}
 
 BACKUPDIR="/root/backup"
 CONFIGDIR="/root/.origintrail_noderc/mainnet"
-CONTAINER_NAME="otnode"
 
 if [ -d ${BACKUPDIR} ]
 then
