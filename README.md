@@ -28,7 +28,7 @@ nano config/config.json
   Find "password"  
   Change "root" to "password"  
   ctrl+s/ctrl+x  
-./scripts/update-arango-password.sh   (I didn't have to do this the first time so I plan on exploring this later. This command may change or be removed at any time.)
+./scripts/update-arango-password.sh   (I didn't have to do this the first time so I plan on exploring this later. This command may change or be removed at any time. setup_arangodb.sh?)
 
 ---------------------------------------------------------------
 RESTORE DB BACKUP (Using SmoothBrain)
