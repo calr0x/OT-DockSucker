@@ -5,8 +5,7 @@ FOLDERDIR=$1
 echo Using ${FOLDERDIR} as node data folder
 
 touch ${FOLDERDIR}/arango.txt
-new_arango_password=password
-echo Generated new arango password!
+new_arango_password=root
 
 echo -n $new_arango_password > ${FOLDERDIR}/arango.txt
 echo New arango password stored in ${FOLDERDIR}/arango.txt file
@@ -16,7 +15,7 @@ echo New arango password stored in ${FOLDERDIR}/arango.txt file
 
 touch arango-password-script.js
 
-echo 'try {'                                                        > arango-password-script.js
+echo 'try {'                                                        >> arango-password-script.js
 echo '    require("@arangodb/users").replace("root", ARGUMENTS[0]);'>> arango-password-script.js
 echo '    print("SUCCESS");'                                        >> arango-password-script.js
 echo '} catch (error) {'                                            >> arango-password-script.js
