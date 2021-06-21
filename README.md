@@ -21,12 +21,7 @@ ln -s /ot-node/5.0.4 /ot-node/current
 cd /ot-node/current  
 echo NODE_ENV=mainnet >> .env  
 cp /root/OT-DockSucker/update-arango-password.sh /ot-node/current/scripts  
-nano /etc/arangodb3/arangod.conf
-
-Change:
-authentication = true
-to
-authentication = false
+sed -i 's/authentication = true/authentication = false/g' /etc/arangodb3/arangod.conf
 
 ---------------------------------------------------------------
 RESTORE DB BACKUP (Using SmoothBrain)
