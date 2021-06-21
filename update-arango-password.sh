@@ -10,9 +10,6 @@ new_arango_password=root
 echo -n $new_arango_password > ${FOLDERDIR}/arango.txt
 echo New arango password stored in ${FOLDERDIR}/arango.txt file
 
-#cat ${FOLDERDIR}/arango.txt
-#echo Generated new arango password: $new_arango_password
-
 touch arango-password-script.js
 
 echo 'try {'                                                        >> arango-password-script.js
