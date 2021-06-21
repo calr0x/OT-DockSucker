@@ -1,7 +1,7 @@
 #!/bin/bash
 echo Running arango password update script...
 
-FOLDERDIR=$1
+FOLDERDIR=/root/.origintral_noderc/mainnet
 echo Using ${FOLDERDIR} as node data folder
 
 touch ${FOLDERDIR}/arango.txt
