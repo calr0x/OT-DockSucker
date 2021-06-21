@@ -21,14 +21,12 @@ ln -s /ot-node/5.0.4 /ot-node/current
 cd /ot-node/current  
 echo NODE_ENV=mainnet >> .env  
 cp /root/OT-DockSucker/update-arango-password.sh /ot-node/current/scripts  
-cd /ot-node/current  
-nano config/config.json  
-  Find "mainnet"  
-  Find "database"  
-  Find "password"  
-  Change "root" to "password"  
-  ctrl+s/ctrl+x  
-./scripts/update-arango-password.sh   (I didn't have to do this the first time so I plan on exploring this later. This command may change or be removed at any time. setup_arangodb.sh?)
+nano /etc/arangodb3/arangod.conf
+
+Change:
+authentication = true
+to
+authentication = false
 
 ---------------------------------------------------------------
 RESTORE DB BACKUP (Using SmoothBrain)
