@@ -21,6 +21,13 @@ ln -s /ot-node/5.0.4 /ot-node/current
 cd /ot-node/current  
 echo NODE_ENV=mainnet >> .env  
 cp /root/OT-DockSucker/update-arango-password.sh /ot-node/current/scripts  
+cd /ot-node/current  
+nano config/config.json  
+  Find "mainnet"  
+  Find "database"  
+  Find "password"  
+  Change "root" to "password"  
+  ctrl+s/ctrl+x  
 ./scripts/update-arango-password.sh  
 
 cp /root/backup/.origintrail_noderc /ot-node/current/
@@ -48,13 +55,7 @@ cd /root/OT-DockSucker
 rm -rf /root/backup/arangodb  
 cp -r /root/backup/* /root/.origintrail_noderc/mainnet/  
 ---------------------------------------------------------------  
-cd /ot-node/current  
-nano config/config.json  
-  Find "mainnet"  
-  Find "database"  
-  Find "password"  
-  Change "root" to "password"  
-  ctrl+s/ctrl+x  
+
 npm run setup  
 npm start  
 
