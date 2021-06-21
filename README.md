@@ -47,12 +47,13 @@ nano /root/backup/.origintrail_noderc
 
 VERIFY THE IP NEEDS TO CHANGE/BE THE SAME
 
-ctrl+s/ctrl+x  
+ctrl+s / ctrl+x  
 cp /root/backup/.origintrail_noderc /ot-node/current/  
 cd /root/OT-DockSucker  
 ./restore  
 rm -rf /root/backup/arangodb  
 cp -r /root/backup/* /root/.origintrail_noderc/mainnet/  
+
 ---------------------------------------------------------------  
 
 npm run setup  
