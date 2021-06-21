@@ -52,5 +52,5 @@ fi
 #cp ${CONFIGDIR}/arango.txt arango.txt
 #databasePassword=$(cat arango.txt)
 
-echo "arangorestore --server.database origintrail --server.username root --server.password "password" --input-directory backup/arangodb/ --overwrite true --create-database true"
+echo "arangorestore --server.database origintrail --server.username root --server.password "root" --input-directory backup/arangodb/ --overwrite true --create-database true"
 arangorestore --server.database origintrail --server.username root --server.password "password" --input-directory /root/backup/arangodb/ --overwrite true --create-database true
