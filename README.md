@@ -45,7 +45,7 @@ mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup
 rm -rf /root/root  
 nano /root/backup/.origintrail_noderc  
 
-**VERIFY THE IP NEEDS TO CHANGE/BE THE SAME**
+VERIFY THE IP NEEDS TO CHANGE/BE THE SAME
 
 ctrl+s/ctrl+x  
 cp /root/backup/.origintrail_noderc /ot-node/current/  
