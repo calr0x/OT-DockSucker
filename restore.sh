@@ -43,6 +43,7 @@ then
   cp -r ${sourcePath} ${destinationPath}
 fi
 
+databasePassword=$(cat /root/.origintrail_noderc/mainnet/arango.txt)
 #databaseName=$(cat ${BACKUPDIR}/arangodb/database.txt)
 #echo "database name ${databaseName}"
 
@@ -53,4 +54,4 @@ fi
 #databasePassword=$(cat arango.txt)
 
 echo "arangorestore --server.database origintrail --server.username root --server.password "root" --input-directory backup/arangodb/ --overwrite true --create-database true"
-arangorestore --server.database origintrail --server.username root --server.password "password" --input-directory /root/backup/arangodb/ --overwrite true --create-database true
+arangorestore --server.database origintrail --server.username root --server.password "${databasePassword}" --input-directory /root/backup/arangodb/ --overwrite true --create-database true
