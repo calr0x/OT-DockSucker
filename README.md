@@ -13,8 +13,6 @@ cd && git clone https://github.com/calr0x/OT-DockSucker.git && cd OT-DockSucker
 apt-mark hold arangodb3 nodejs  
 mkdir -p /ot-node && mv /root/OT-DockSucker/ot-node/ /ot-node/5.0.4 && ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current  
 echo NODE_ENV=mainnet >> .env  
-#cp /root/OT-DockSucker/update-arango-password.sh /ot-node/current/scripts  
-#sed -i 's/authentication = true/authentication = false/g' /etc/arangodb3/arangod.conf
 
 ---------------------------------------------------------------
 DOWNLOAD BACKUP (Using SmoothBrain)
