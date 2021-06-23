@@ -72,8 +72,11 @@ echo "./restore.sh"
 echo "rm -rf /root/backup/arangodb"
 rm -rf /root/backup/arangodb
 
-echo "cp -r /root/backup/* /root/.origintrail_noderc/mainnet/""
+echo "cp -r /root/backup/* /root/.origintrail_noderc/mainnet/"
 cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
+
+echo "rm -rf /root/backup"
+rm -rf /root/backup
 
 echo "cp /root/OT-DockSucker/otnode.service /lib/systemd/system"
 cp /root/OT-DockSucker/otnode.service /lib/systemd/system
