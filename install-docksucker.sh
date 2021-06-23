@@ -80,5 +80,5 @@ cp /root/OT-DockSucker/otnode.service /lib/systemd/system
 echo "systemctl enable otnode.service"
 systemctl enable otnode.service
 
-#echo "systemctl start otnode"
+#echo systemctl start otnode
 #systemctl start otnode
