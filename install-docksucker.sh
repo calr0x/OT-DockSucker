@@ -23,7 +23,7 @@ echo NODE_ENV=mainnet >> .env
 echo "cd /root"
 cd /root
 
-echo "git -C /root clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
+echo "git -C /root/ clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git /root
 
 echo "cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh"
