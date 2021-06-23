@@ -49,4 +49,4 @@ cp /root/OT-DockSucker/otnode.service /lib/systemd/system
 
 systemctl enable otnode.service
 
-systemctl start otnode
+#systemctl start otnode
