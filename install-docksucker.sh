@@ -36,7 +36,10 @@ echo "source /root/Smoothbrain-Backup/config.sh"
 source /root/Smoothbrain-Backup/config.sh
 
 echo "./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
-./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1
+SNAPSHOT=$(./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
+
+echo "./restic restore $SNAPSHOT --target /root"
+./restic restore $SNAPSHOT --target /root
 
 echo "cd"
 cd
