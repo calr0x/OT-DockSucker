@@ -31,7 +31,7 @@ ctrl+s ctrl+x
 
 __Install is done!__
 
-To do:
-copy:
-bid_check.sh
-restic-backup.sh
+To do:  
+copy:  
+bid_check.sh  
+restic-backup.sh  
