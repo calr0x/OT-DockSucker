@@ -20,6 +20,9 @@ ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
 echo NODE_ENV=mainnet >> .env
 
 #Smoothbrain
+echo "cd"
+cd
+
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
