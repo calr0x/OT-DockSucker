@@ -1,52 +1,74 @@
 #!/bin/bash
-
+echo apt install -y build-essential gcc python-dev ccze
 apt install -y build-essential gcc python-dev ccze
 
+echo cd data
 cd data
 
+echo ./install-otnode.sh
 ./install-otnode.sh
 
+echo apt-mark hold arangodb3 nodejs
 apt-mark hold arangodb3 nodejs
 
+echo mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4
 mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4
 
+echo ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
 ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
 
 echo NODE_ENV=mainnet >> .env
 
 #Smoothbrain
+echo git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
+echo cd OT-Smoothbrain-Backup
 cd OT-Smoothbrain-Backup
 
+echo cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 
+echo source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
 source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
 
+echo cd
 cd
 
+echo mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 
+echo sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": '"$ADDRESS"'|g' /root/backup/.origintrail_noderc
 sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": '"$ADDRESS"'|g' /root/backup/.origintrail_noderc
 
+echo cp /root/backup/.origintrail_noderc /ot-node/current/
 cp /root/backup/.origintrail_noderc /ot-node/current/
 
+echo cd /ot-node/current
 cd /ot-node/current
 
+echo npm run setup
 npm run setup
 
+echo ./scripts/update-arango-password.sh /root/.origintrail_noderc/mainnet/
 ./scripts/update-arango-password.sh /root/.origintrail_noderc/mainnet/
 
+echo cd /root/OT-DockSucker/data
 cd /root/OT-DockSucker/data
 
+echo ./restore.sh
 ./restore.sh
 
+echo rm -rf /root/backup/arangodb
 rm -rf /root/backup/arangodb
 
+echo cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
 cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
 
+echo cp /root/OT-DockSucker/otnode.service /lib/systemd/system
 cp /root/OT-DockSucker/otnode.service /lib/systemd/system
 
+echo systemctl enable otnode.service
 systemctl enable otnode.service
 
 #systemctl start otnode
