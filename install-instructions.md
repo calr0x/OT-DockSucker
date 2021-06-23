@@ -2,7 +2,7 @@
 cd
 ```
 ```
-apt update && apt upgrade -y && apt install git
+apt update && apt upgrade -y && apt install git -y
 ```
 ```
 git clone https://github.com/calr0x/OT-DockSucker.git

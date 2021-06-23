@@ -2,13 +2,13 @@
 
 apt install -y build-essential gcc python-dev ccze
 
-cd OT-DockSucker
+cd data
 
-./root/OT-DockSucker/data/install-otnode.sh
+./install-otnode.sh
 
 apt-mark hold arangodb3 nodejs
 
-mkdir -p /ot-node && mv /root/OT-DockSucker/ot-node/ /ot-node/5.0.4
+mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4
 
 ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
 
@@ -19,11 +19,11 @@ git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
 cd OT-Smoothbrain-Backup
 
-cp /OT-DockerSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
+cp /root/OT-DockerSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 
 source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
 
-./restic restore $(restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1) --target /root
+cd
 
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 
