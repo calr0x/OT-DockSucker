@@ -27,7 +27,7 @@ echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
 echo "cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh"
-cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
+cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh
 
 echo "source /root/Smoothbrain-Backup/config.sh"
 source /root/Smoothbrain-Backup/config.sh
