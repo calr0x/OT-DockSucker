@@ -26,8 +26,8 @@ cd /root
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
-echo "mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root"
-mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root
+#echo "mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root"
+#mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root
 
 echo "cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh"
 cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh
