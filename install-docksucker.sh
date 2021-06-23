@@ -26,11 +26,11 @@ cd /root
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
-echo "cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh"
+echo "cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh"
 cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh
 
-echo "source /root/Smoothbrain-Backup/config.sh"
-source /root/Smoothbrain-Backup/config.sh
+echo "source /root/OT-Smoothbrain-Backup/config.sh"
+source /root/OT-Smoothbrain-Backup/config.sh
 
 echo "/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
 SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
