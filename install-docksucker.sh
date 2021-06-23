@@ -23,7 +23,7 @@ cp /OT-DockerSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 
 source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
 
-./restic restore <PUT_SNAPSHOT_ID_HERE> --target /root
+./restic restore $(restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1) --target /root
 
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 
@@ -37,7 +37,7 @@ npm run setup
 
 ./scripts/update-arango-password.sh /root/.origintrail_noderc/mainnet/
 
-cd /root/OT-DockSucker
+cd /root/OT-DockSucker/data
 
 ./restore.sh
 
