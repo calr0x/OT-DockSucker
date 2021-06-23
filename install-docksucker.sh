@@ -19,7 +19,7 @@ git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
 cd OT-Smoothbrain-Backup
 
-cp /root/OT-DockerSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
+cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 
 source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
 
