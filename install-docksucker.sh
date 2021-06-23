@@ -62,6 +62,9 @@ echo "/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_node
 echo "cd /root/OT-DockSucker/data"
 cd /root/OT-DockSucker/data
 
+echo "mkdir -p /root/backup"
+mkdir -p /root/backup
+
 echo "./restore.sh"
 ./restore.sh
 
