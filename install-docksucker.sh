@@ -32,11 +32,11 @@ cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 echo "source /root/Smoothbrain-Backup/config.sh"
 source /root/Smoothbrain-Backup/config.sh
 
-echo "./root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
-SNAPSHOT=$(./root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
+echo "/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
+SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
 
-echo "./root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root"
-./root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root
+echo "/root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root"
+/root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root
 
 echo "cd /root"
 cd /root
