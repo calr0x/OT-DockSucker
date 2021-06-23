@@ -1,6 +1,9 @@
 ```
 cd
 ```
+__Set HOSTNAME to the same hostname as the other one was. This is needed for Smoothbrain to identify the correct backup to restore.__
+```
+hostnamectl set-hostname HOSTNAME
 ```
 apt update && apt upgrade -y && apt install git -y
 ```
