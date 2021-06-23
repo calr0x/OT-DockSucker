@@ -24,7 +24,7 @@ echo "cd /root"
 cd /root
 
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
-git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git /root
+git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 
 echo "mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root"
 mv /root/OT-DockSucker/OT-Smoothbrain-Backup /root
