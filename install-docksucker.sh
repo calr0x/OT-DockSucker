@@ -47,12 +47,12 @@ cd /root
 echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 
+echo "cp /root/backup/.origintrail_noderc /ot-node/current/"
+cp /root/backup/.origintrail_noderc /ot-node/current/
+
 ADDRESS=$(hostname -I | cut -f 1 -d ' ')
 echo "sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": '"$ADDRESS"'|g' /root/backup/.origintrail_noderc"
 sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
-
-echo "cp /root/backup/.origintrail_noderc /ot-node/current/"
-cp /root/backup/.origintrail_noderc /ot-node/current/
 
 echo "cd /ot-node/current"
 cd /ot-node/current
