@@ -40,7 +40,11 @@ cp /root/backup/.origintrail_noderc /ot-node/current/
 __Setup and intialize origintrail_noderc__
 ```
 cd /ot-node/current  
+```
+```
 npm run setup  
+```
+```
 ./scripts/update-arango-password.sh /root/.origintrail_noderc/mainnet/
 ```
 
