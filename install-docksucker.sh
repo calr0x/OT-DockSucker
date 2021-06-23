@@ -1,11 +1,10 @@
 #!/bin/bash
 
-cd
 apt install -y build-essential gcc python-dev ccze
 
-git clone https://github.com/calr0x/OT-DockSucker.git && cd OT-DockSucker
+cd OT-DockSucker
 
-./root/OT-DockSucker/install.sh
+./root/OT-DockSucker/data/install-otnode.sh
 
 apt-mark hold arangodb3 nodejs
 
