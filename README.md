@@ -7,13 +7,17 @@ IT IS RECOMMENDED TO MAKE A BACKUP ON THE NODE YOU ARE ATTEMPTING TO CONVERT TO 
 
 Create a VPS using Ubuntu __18.04__. 20.04 will __NOT__ work. Any version other than 18.04 CANNOT be used.
 
+Login as root
+```
+cd
 apt update && apt upgrade -y && apt install -y build-essential gcc python-dev git ccze  
-cd && git clone https://github.com/calr0x/OT-DockSucker.git && cd OT-DockSucker  
+git clone https://github.com/calr0x/OT-DockSucker.git && cd OT-DockSucker  
 ./install.sh  
 apt-mark hold arangodb3 nodejs  
 mkdir -p /ot-node && mv /root/OT-DockSucker/ot-node/ /ot-node/5.0.4  
 ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current  
 echo NODE_ENV=mainnet >> .env  
+```
 
 ---------------------------------------------------------------
 DOWNLOAD BACKUP (Using SmoothBrain)
