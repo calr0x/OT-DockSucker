@@ -29,8 +29,11 @@ cd OT-Smoothbrain-Backup
 echo cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 
-echo source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
-source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>
+echo source /root/Smoothbrain-Backup/config.sh
+source /root/Smoothbrain-Backup/config.sh
+
+echo ./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1
+./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1
 
 echo cd
 cd
