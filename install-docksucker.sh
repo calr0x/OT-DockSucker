@@ -20,14 +20,11 @@ ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
 echo NODE_ENV=mainnet >> .env
 
 #Smoothbrain
-echo "cd"
-cd
+echo "cd /root"
+cd /root
 
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
-
-echo "cd OT-Smoothbrain-Backup"
-cd OT-Smoothbrain-Backup
 
 echo "cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh"
 cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
@@ -35,14 +32,14 @@ cp /root/OT-DockSucker/data/config.sh /root/Smoothbrain-Backup/config.sh
 echo "source /root/Smoothbrain-Backup/config.sh"
 source /root/Smoothbrain-Backup/config.sh
 
-echo "./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
-SNAPSHOT=$(./restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
+echo "./root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
+SNAPSHOT=$(./root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
 
-echo "./restic restore $SNAPSHOT --target /root"
-./restic restore $SNAPSHOT --target /root
+echo "./root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root"
+./root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root
 
-echo "cd"
-cd
+echo "cd /root"
+cd /root
 
 echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root

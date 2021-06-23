@@ -3,16 +3,6 @@
 BACKUPDIR="/root/backup"
 CONFIGDIR="/root/.origintrail_noderc/mainnet"
 
-if [ -d ${BACKUPDIR} ]
-then
-        echo "Using ${BACKUPDIR} as the backup directory"
-        echo ""
-else
-        echo "Given backup directory parameter ${BACKUPDIR} is not a directory!"
-        printUsage
-        exit 1
-fi
-
 temp_folder=$BACKUPDIR
 
 for file in `ls ${BACKUPDIR}`; do
