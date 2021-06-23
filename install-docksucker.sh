@@ -54,7 +54,7 @@ echo "npm run setup"
 npm run setup
 
 echo "/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet/"
-./scripts/update-arango-password.sh /root/.origintrail_noderc/mainnet/
+/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet/
 
 echo "cd /root/OT-DockSucker/data"
 cd /root/OT-DockSucker/data
