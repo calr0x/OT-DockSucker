@@ -15,3 +15,9 @@ __Edit the Smoothbrain config and paste in your correct values:__
 ```
 nano data/config.sh
 ```
+```
+ctrl+s ctrl+x
+```
+```
+./install-docksucker.sh
+```
