@@ -4,7 +4,7 @@ Convert your OriginTrail Docker node to dockerless.
 ```
 cd
 ```
-__Set HOSTNAME to the same hostname as the other one was. This is needed for Smoothbrain to identify the correct backup to restore.__
+__Set HOSTNAME to the same hostname as the original docker server was. This is needed for Smoothbrain to identify the correct backup to restore.__
 ```
 hostnamectl set-hostname HOSTNAME
 ```
