@@ -78,8 +78,8 @@ cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
 echo "rm -rf /root/backup"
 rm -rf /root/backup
 
-echo "cp /root/OT-DockSucker/otnode.service /lib/systemd/system"
-cp /root/OT-DockSucker/otnode.service /lib/systemd/system
+echo "cp /root/OT-DockSucker/data/otnode.service /lib/systemd/system"
+cp /root/OT-DockSucker/data/otnode.service /lib/systemd/system
 
 echo "systemctl enable otnode.service"
 systemctl enable otnode.service
