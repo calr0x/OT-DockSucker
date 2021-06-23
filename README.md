@@ -19,18 +19,14 @@ DOWNLOAD BACKUP (Using SmoothBrain)
 
 ** If you are NOT using Smoothbrain Backup, the BACKUP files all need to be in /root/backup. Only the various files and arangodb/migrations directories should be in here. THE BELOW DIRECTIONS ARE ONLY FOR SMOOTHBRAIN BACKUP USERS. YOUR STEPS WILL VARY BASED ON YOUR BACKUP METHOD.**
 
-cd && git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git && cd OT-Smoothbrain-Backup  
-nano config.sh (fill it out)  
-source config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>  
+source /root/Smoothbrain-Backup/config.sh && ./restic snapshots -H <PUT_HOSTNAME_HERE>  
 ./restic restore <PUT_SNAPSHOT_ID_HERE> --target /root  
 mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root  
 
 ---------------------------------------------------------------
 EDIT origintrail_noderc
 
-nano /root/backup/.origintrail_noderc
-<VERIFY THE IP NEEDS TO CHANGE/BE THE SAME>
-ctrl+s / ctrl+x  
+sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": '"$ADDRESS"'|g' /root/backup/.origintrail_noderc
 cp /root/backup/.origintrail_noderc /ot-node/current/  
 
 ---------------------------------------------------------------  
