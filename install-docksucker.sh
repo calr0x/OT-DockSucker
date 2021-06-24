@@ -158,3 +158,5 @@ fi
 
 #echo systemctl start otnode
 #systemctl start otnode
+
+ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw enable
