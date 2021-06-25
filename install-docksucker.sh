@@ -66,6 +66,13 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "/root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root"
+echo "******************************************"
+echo "******************************************"
+echo "******************************************"
+echo "Using $SNAPSHOT"
+echo "******************************************"
+echo "******************************************"
+echo "******************************************"
 /root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root
 if [[ $? -ne 0 ]]; then
   exit 1
@@ -90,7 +97,13 @@ if [[ $? -ne 0 ]]; then
 fi
 
 ADDRESS=$(hostname -I | cut -f 1 -d ' ')
-echo "sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": '"$ADDRESS"'|g' /root/backup/.origintrail_noderc"
+echo "******************************************"
+echo "******************************************"
+echo "******************************************"
+echo $ADDRESS
+echo "******************************************"
+echo "******************************************"
+echo "******************************************"
 sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 if [[ $? -ne 0 ]]; then
   exit 1
