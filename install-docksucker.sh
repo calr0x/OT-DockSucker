@@ -91,7 +91,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "cp /root/backup/.origintrail_noderc /ot-node/current/"
-cp /root/backup/.origintrail_noderc /ot-node/current/
+cp /root/backup/.origintrail_noderc /ot-node/current
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
