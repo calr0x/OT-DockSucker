@@ -4,6 +4,8 @@ source "/root/OT-Smoothbrain-Backup/config.sh"
 STATUS=$?
 N1=$'\n'
 
+ln -s /ot-node/backup /root/backup
+
 cd /ot-node/current
 
 echo "Backing up OT Node data"
