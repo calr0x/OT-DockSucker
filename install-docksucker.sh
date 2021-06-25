@@ -70,6 +70,9 @@ echo "******************************************"
 echo "******************************************"
 echo "******************************************"
 echo "Using $SNAPSHOT"
+echo "Writing the snapshot value $SNAPSHOT which was used to restore to /root/dockerless-install-settings."
+echo "You can delete this file at any time."
+echo $NAPSHOT >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
@@ -101,6 +104,9 @@ echo "******************************************"
 echo "******************************************"
 echo "******************************************"
 echo $ADDRESS
+echo "Writing IP address $ADDRESS value to /root/dockerless-install-settings."
+echo "You can delete this file at any time."
+echo $ADDRESS >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
@@ -169,7 +175,14 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-#echo systemctl start otnode
-#systemctl start otnode
-
+echo "Adding firewall rules 22, 3000, 5278, and 8900, and enabling the firewall"
 ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw enable
+
+echo "The IP address used to configure .origintral_noderc is $ADDRESS."
+echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
+
+echo "Starting the node"
+systemctl start otnode
+
+echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
+journalctl -u otnode -f | ccze -A
