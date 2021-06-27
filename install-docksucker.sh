@@ -72,7 +72,7 @@ echo "******************************************"
 echo "Using $SNAPSHOT"
 echo "Writing the snapshot value $SNAPSHOT which was used to restore to /root/dockerless-install-settings."
 echo "You can delete this file at any time."
-echo $NAPSHOT >> dockerless-install-settings
+echo $SNAPSHOT >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
