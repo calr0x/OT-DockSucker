@@ -178,11 +178,12 @@ fi
 echo "Adding firewall rules 22, 3000, 5278, and 8900, and enabling the firewall"
 ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw enable
 
-echo "The IP address used to configure .origintral_noderc is $ADDRESS."
+#echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
 
-echo "Starting the node"
-systemctl start otnode
+nano /ot-node/current/.origintrail_noderc
+#echo "Starting the node"
+#systemctl start otnode
 
-echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
-journalctl -u otnode -f | ccze -A
+#echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
+#journalctl -u otnode -f | ccze -A
