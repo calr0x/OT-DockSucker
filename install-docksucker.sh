@@ -69,7 +69,6 @@ echo "/root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root"
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
-echo "Using $SNAPSHOT"
 echo "Writing the snapshot value $SNAPSHOT which was used to restore to /root/dockerless-install-settings."
 echo "You can delete this file at any time."
 echo $SNAPSHOT >> dockerless-install-settings
