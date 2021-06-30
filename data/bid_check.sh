@@ -14,3 +14,12 @@ echo $BIDS
 if [ $BIDS -eq 0 ]; then
   /root/OT-NodeWatch/data/send.sh "Has not bid in the last $BID_INTERVAL"
 fi
+
+BIDS=$(journalctl -u otnode.service --since "1 hour ago" | grep 've been chosen' | wc -l)
+echo $BIDS
+
+if [ $BIDS == 1 ]; then
+  /root/OT-NodeWatch/data/send.sh "Job awarded"
+fi
+if [ $BIDS -ge 2 ]; then
+  /root/OT-NodeWatch/data/send.sh "$BIDS job awarded"
