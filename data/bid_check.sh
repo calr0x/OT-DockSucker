@@ -23,3 +23,4 @@ if [ $BIDS == 1 ]; then
 fi
 if [ $BIDS -ge 2 ]; then
   /root/OT-NodeWatch/data/send.sh "$BIDS job awarded"
+fi
