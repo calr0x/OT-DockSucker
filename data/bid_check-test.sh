@@ -7,7 +7,7 @@
 # CRON should run this script which checks the logs for the past 1 hour.
 
 #!/bin/bash
-CHECK_INTERVAL="1 day ago"
+CHECK_INTERVAL="1 hour ago"
 
 BIDS=$(journalctl -u otnode.service --since "$CHECK_INTERVAL" | grep Accepting | wc -l)
 #echo Bids: $BIDS
