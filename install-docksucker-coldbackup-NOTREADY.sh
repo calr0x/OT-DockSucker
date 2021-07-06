@@ -1,4 +1,4 @@
-#!/bin/bash
+##!/bin/bash
 echo "apt install -y build-essential gcc python-dev ccze"
 apt install -y build-essential gcc python-dev ccze
 if [[ $? -ne 0 ]]; then
