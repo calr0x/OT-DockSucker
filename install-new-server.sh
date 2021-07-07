@@ -54,7 +54,7 @@ echo $ADDRESS >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
-sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintra$
+sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -91,3 +91,6 @@ echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 nano /ot-node/current/.origintrail_noderc
 #echo "Starting the node"
 #systemctl start otnode
+
+#echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
+#journalctl -u otnode -f | ccze -A
