@@ -1,6 +1,6 @@
 #!/bin/bash
-echo "apt install -y build-essential gcc python-dev ccze"
-apt install -y build-essential gcc python-dev ccze
+echo "apt install -y build-essential gcc python-dev ccze ncdu"
+apt install -y build-essential gcc python-dev ccze ncdu
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -88,9 +88,13 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw en
 
 echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 
+echo "Enabling the node to start on server boot"
+systemctl enable otnode
+
 nano /ot-node/current/.origintrail_noderc
+
 #echo "Starting the node"
 #systemctl start otnode
 
-#echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
+#echo "Displaying the logs on startup. Exit using ctrl+c at any time. The node will continue to run."
 #journalctl -u otnode -f | ccze -A
