@@ -91,10 +91,10 @@ echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "Enabling the node to start on server boot"
 systemctl enable otnode
 
-nano /ot-node/current/.origintrail_noderc
+#nano /ot-node/current/.origintrail_noderc
 
-#echo "Starting the node"
-#systemctl start otnode
+echo "Starting the node"
+systemctl start otnode
 
-#echo "Displaying the logs on startup. Exit using ctrl+c at any time. The node will continue to run."
-#journalctl -u otnode -f | ccze -A
+echo "Displaying the logs on startup. Exit using ctrl+c at any time. The node will continue to run."
+journalctl -u otnode -f | ccze -A
