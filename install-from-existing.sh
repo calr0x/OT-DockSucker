@@ -5,6 +5,9 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+echo "Temporarily enable 1gig swap file"
+fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+
 echo "cd data"
 cd data
 if [[ $? -ne 0 ]]; then
@@ -180,9 +183,13 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw en
 #echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
 
-nano /ot-node/current/.origintrail_noderc
-#echo "Starting the node"
-#systemctl start otnode
+echo "Removing swapfile"
+swapoff /swapfile && rm /swapfile
 
-#echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
-#journalctl -u otnode -f | ccze -A
+#nano /ot-node/current/.origintrail_noderc
+
+echo "Starting the node"
+systemctl start otnode
+
+echo "Displaying the logs on strtup. Exit using ctrl+c at any time. The node will continue to run."
+journalctl -u otnode -f | ccze -A

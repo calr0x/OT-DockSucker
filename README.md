@@ -14,11 +14,6 @@ __Set HOSTNAME to the same hostname as the original docker server was. This is n
 hostnamectl set-hostname HOSTNAME
 ```
 \
-__Add 1GB swap space to your server (for 2GB RAM servers)__
-```
-fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile && cp /etc/fstab /etc/fstab.bak && echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
-```
-\
 __Update and git clone__
 ```
 apt update && apt upgrade -y && apt install git -y
@@ -40,12 +35,6 @@ when you're done, ctrl+s and ctrl+x
 __Install (might take a while)__
 ```
 ./install-docksucker.sh
-```
-```
-systemctl start otnode
-```
-```
-journalctl -u otnode -f | ccze -A
 ```
 \
 __Install is done!__
