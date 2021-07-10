@@ -67,7 +67,7 @@ fi
 echo "source /root/OT-Smoothbrain-Backup/config.sh"
 source /root/OT-Smoothbrain-Backup/config.sh
 
-echo "/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
+echo "/root/OT-Smoothbrain-Backup/restic snapshots --tag coldbackup -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
 SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
 if [[ $? -ne 0 ]]; then
   exit 1
