@@ -29,8 +29,11 @@ __Edit the Smoothbrain config and paste in your correct values:__
 ```
 nano data/config.sh
 ```
-when you're done, ctrl+s and ctrl+x
 \
+when you're done:
+```
+ctrl+s and ctrl+x
+```
 \
 __Install (might take a while)__
 ```
