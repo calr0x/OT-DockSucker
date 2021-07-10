@@ -2,7 +2,7 @@
 
 VERSION=$(lsb_release -sr)
 
-if [ $VERSION -eq "18.04" ]; then
+if [ $VERSION != 18.04 ]; then
   echo "OT-DockSucker requires Ubuntu 18.04. Destroy this VPS and remake using Ubuntu 18.04."
   exit 1
 fi

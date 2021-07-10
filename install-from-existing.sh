@@ -1,4 +1,12 @@
 #!/bin/bash
+
+VERSION=$(lsb_release -sr)
+
+if [ $VERSION != 18.04 ]; then
+  echo "OT-DockSucker requires Ubuntu 18.04. Destroy this VPS and remake using Ubuntu 18.04."
+  exit 1
+fi
+
 echo "apt install -y build-essential gcc python-dev ccze"
 apt install -y build-essential gcc python-dev ccze
 if [[ $? -ne 0 ]]; then
