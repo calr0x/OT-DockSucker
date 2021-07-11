@@ -15,6 +15,7 @@ BIDS=$(journalctl -u otnode.service --since "$CHECK_INTERVAL" | grep Accepting |
 
 if [ $BIDS -eq 0 ]; then
   /root/OT-NodeWatch/data/send.sh "Has not bid since $CHECK_INTERVAL"
+  systemctl restart otnode
 fi
 
 JOBS=$(journalctl -u otnode.service --since "$CHECK_INTERVAL" | grep 've been chosen' | wc -l)
