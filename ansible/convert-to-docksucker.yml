@@ -35,4 +35,4 @@
   - name: Execute DockSucker installation
     shell:
       cmd: install-from-existing.sh
-      chdir: /root/OT-DockSucker
+      chdir: /root/OT-DockSucker/
