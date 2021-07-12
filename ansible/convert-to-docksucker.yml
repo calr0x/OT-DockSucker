@@ -45,11 +45,3 @@
     shell: /root/OT-DockSucker/install-from-existing.sh >> OUTPUT
     args:
       chdir: /root/OT-DockSucker/
-  
-  - name: Get IP address
-    shell: echo $(hostname -I | cut -f 1 -d ' ') >> ip
-    args:
-      chdir: /root/OT-DockSucker
-  
-  - name: Update IP address in .origintrail_noderc
-    shell: 
