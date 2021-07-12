@@ -1,0 +1,37 @@
+---
+# EDIT:
+# nano /root/OT-DockSucker/data/config.sh
+# Fill in both restic and AWS details
+
+- name: Convert existing nodes to DockSucker
+  hosts: all
+  gather_facts: yes
+
+  tasks:
+  - name: Set hostname
+    hostname: {{ node_name }}
+
+  - name: Install git
+    apt:
+      name: git
+      state: present
+      update_cache: yes
+
+  - name: Clone OT-DockSucker git repository
+    git:
+      repo: 'https://github.com/calr0x/OT-DockSucker.git'
+      dest: /root/OT-DockSucker
+      force: yes
+  
+  - name: Copy node config file to server
+    copy:
+      src: /~/OT-DockSucker/data/config.sh
+      dest: /root/OT-DockSucker/data/config.sh
+      owner: root
+      group: root
+      mode: '0700'
+  
+  - name: Execute DockSucker installation
+    shell:
+      cmd: install-from-existing.sh
+      chdir: /root/OT-DockSucker
