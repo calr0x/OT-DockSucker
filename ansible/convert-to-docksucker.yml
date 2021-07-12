@@ -13,7 +13,7 @@
   tasks:
   - name: Set hostname
     hostname:
-      name: falcor10
+      name: '{{node_name}}'
 
   - name: Make /root directory
     file:
