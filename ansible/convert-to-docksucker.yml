@@ -37,3 +37,8 @@
       owner: root
       group: root
       mode: '0700'
+  
+  - name: Execute DockSucker installation
+    shell: /root/OT-DockSucker/install-from-existing.sh >> OUTPUT
+    args:
+      chdir: /root/OT-DockSucker/
