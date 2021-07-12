@@ -2,6 +2,9 @@
 # EDITthe following:
 # nano /root/OT-DockSucker/data/config.sh
 # Fill in both restic and AWS details
+# Execute this playbook with the following:
+# cd ~/OT-DockSucker
+# ansible-playbook -u root -k -i /etc/ansible/hostsCONVERT ansible/convert-to-docksucker.yml
 
 - name: Convert existing nodes to DockSucker
   hosts: all
@@ -42,3 +45,11 @@
     shell: /root/OT-DockSucker/install-from-existing.sh >> OUTPUT
     args:
       chdir: /root/OT-DockSucker/
+  
+  - name: Get IP address
+    shell: echo $(hostname -I | cut -f 1 -d ' ') >> ip
+    args:
+      chdir: /root/OT-DockSucker
+  
+  - name: Update IP address in .origintrail_noderc
+    shell: 
