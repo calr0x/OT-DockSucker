@@ -48,5 +48,3 @@
     shell: /root/OT-DockSucker/install-from-existing.sh >> OUTPUT
     args:
       chdir: /root/OT-DockSucker/
-
-  - name: Start the otnode service
