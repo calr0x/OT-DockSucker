@@ -33,6 +33,6 @@
       mode: '0700'
   
   - name: Execute DockSucker installation
-    shell:
-      cmd: install-from-existing.sh
+    shell: install-from-existing.sh
+    args:
       chdir: /root/OT-DockSucker/
