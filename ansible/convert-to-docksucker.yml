@@ -37,5 +37,3 @@
       owner: root
       group: root
       mode: '0700'
-  
-  - name: Copy DockSucker restic-restore.sh to Smoothbrain
