@@ -9,7 +9,8 @@
 
   tasks:
   - name: Set hostname
-    hostname: falcor10
+    hostname:
+      name: falcor10
 
   - name: Install git
     apt:
