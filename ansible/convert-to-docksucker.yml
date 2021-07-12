@@ -1,7 +1,10 @@
 ---
-# EDITthe following:
+# EDIT the following:
+#
 # nano /root/OT-DockSucker/data/config.sh
+#
 # Fill in both restic and AWS details
+#
 # Execute this playbook with the following:
 # cd ~/OT-DockSucker
 # ansible-playbook -u root -k -i /etc/ansible/hostsCONVERT ansible/convert-to-docksucker.yml
