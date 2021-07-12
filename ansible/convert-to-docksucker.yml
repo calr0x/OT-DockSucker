@@ -9,7 +9,7 @@
 
   tasks:
   - name: Set hostname
-    hostname: {{ node_name }}
+    hostname: '{{ node_name }}'
 
   - name: Install git
     apt:
