@@ -26,7 +26,7 @@
   
   - name: Copy node config file to server
     copy:
-      src: /~/OT-DockSucker/data/config.sh
+      src: ~/OT-DockSucker/data/config.sh
       dest: /root/OT-DockSucker/data/config.sh
       owner: root
       group: root
