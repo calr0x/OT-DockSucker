@@ -98,6 +98,9 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
+#Commented is used for docker-version nodes
+#mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
+
 mv /root/root/backup/ /root/backup && rm -rf /root/root
 if [[ $? -ne 0 ]]; then
   exit 1
@@ -186,7 +189,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "Adding firewall rules 22, 3000, 5278, and 8900, and enabling the firewall"
-ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw enable
+ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && yes | ufw enable
 
 #echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
