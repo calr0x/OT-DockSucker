@@ -3,25 +3,26 @@
 BACKUPDIR="/root/backup"
 CONFIGDIR="/root/.origintrail_noderc/mainnet"
 
-temp_folder=$BACKUPDIR
-
 for file in `ls ${BACKUPDIR}`; do
     if [ ! ${file}] == "arangodb" ]
     then
-      sourcePath="${BACKUPDIR}/${file}"
-      destinationPath="${CONFIGDIR}/"
+      if [ ! ${file}] == "migrations" ]
+      then
+        sourcePath="${BACKUPDIR}/${file}"
+        destinationPath="${CONFIGDIR}/"
 
-      sourcePath=${temp_folder}/${file}
-      echo "cp ${sourcePath} ${destinationPath}"
-      cp ${sourcePath} ${destinationPath}
+        echo "cp ${sourcePath} ${destinationPath}"
+        cp ${sourcePath} ${destinationPath}
+      fi
     fi
 done
 
 sourcePath=${BACKUPDIR}/.origintrail_noderc
 destinationPath="/ot-node/current/"
 
-echo "cp ${sourcePath} ${destinationPath}"
-cp ${sourcePath} ${destinationPath}
+# I think the below is redundant:
+#echo "cp ${sourcePath} ${destinationPath}"
+#cp ${sourcePath} ${destinationPath}
 
 migrationDir="${BACKUPDIR}/migrations"
 if [ -d ${migrationDir} ]
