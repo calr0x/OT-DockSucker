@@ -68,4 +68,4 @@ sudo apt-get install git build-essential gcc python-dev
 git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
 cd ot-node && npm install
 
-echo "Installation complete. Please configure .origintrail_noderc file."
+echo "Node installation complete."
