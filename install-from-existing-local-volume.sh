@@ -160,6 +160,7 @@ ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.
 echo "Removing swapfile"
 swapoff /swapfile && rm /swapfile
 
+echo "Installation of OT-Dockerless is complete!"
 #nano /ot-node/current/.origintrail_noderc
 
 #echo "Starting the node"
