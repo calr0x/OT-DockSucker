@@ -99,9 +99,9 @@ fi
 
 echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
 #Commented is used for docker-version nodes
-#mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
+mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
 
-mv /root/root/backup/ /root/backup && rm -rf /root/root
+#mv /root/root/backup/ /root/backup && rm -rf /root/root
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
