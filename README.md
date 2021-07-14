@@ -5,6 +5,8 @@ These steps assume that you have backed up your old node using restic from OT-Sm
 
 You need to create a new server using __Ubuntu 18.04__, this will not work on Ubuntu 20.04.
 
+__Before proceeding, you must complete the OT-Settings repository instructions first__
+
 ```
 cd
 ```
@@ -25,19 +27,9 @@ git clone https://github.com/calr0x/OT-DockSucker.git
 cd OT-DockSucker
 ```
 \
-__Edit the Smoothbrain config and paste in your correct values:__
-```
-nano data/config.sh
-```
-\
-when you're done:
-```
-ctrl+s and ctrl+x
-```
-\
 __Install (might take a while)__
 ```
-./install-docksucker.sh
+./install-from-existing.sh
 ```
 \
 __Install is done!__
@@ -47,37 +39,13 @@ __Install is done!__
 __EXTRAS__
 \
 \
-__Set maximum journal space to 150MB__
+__Set maximum journal space to 50MB__
 ```
-sed -i 's|#SystemMaxUse=|SystemMaxUse=150M|' /etc/systemd/journald.conf
+sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
 ```
 ```
 systemctl restart systemd-journald
 ```
-\
-__If you want to keep using OT-Smoothbrain-Backup for your new DockSucker, you need to copy the dockerless versions of the backup and restore scripts :__
-```
-cp /root/OT-DockSucker/data/restic-backup.sh /root/OT-Smoothbrain-Backup/restic-backup.sh
-```
-```
-cp /root/OT-DockSucker/data/restore.sh /root/OT-Smoothbrain-Backup/restore.sh
-```
-\
-__Set up OT-NodeWatch to work with DockSucker__
-```
-cd
-```
-```
-git clone https://github.com/calr0x/OT-NodeWatch.git 
-```
-```
-cd OT-NodeWatch
-```
-```
-nano config.sh
-```
-enter correct values, when you're done ctrl+s and ctrl+x
-\
 \
 __Remove old crontab inputs and set the crontab for the new dockerless bid check__
 ```
