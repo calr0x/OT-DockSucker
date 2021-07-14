@@ -1,10 +1,5 @@
 ---
-# EDIT the following:
-#
-# nano /root/OT-DockSucker/data/config.sh
-#
-# Fill in both restic and AWS details
-#
+# Follow the OT-Settings repo to complete the config.sh file
 # Execute this playbook with the following:
 # cd ~/OT-DockSucker
 # ansible-playbook -u root -k -i /etc/ansible/hostsCONVERT ansible/convert-to-docksucker.yml
@@ -35,11 +30,17 @@
       repo: 'https://github.com/calr0x/OT-DockSucker.git'
       dest: /root/OT-DockSucker
       force: yes
-  
-  - name: Copy node config file to server
+
+  - name: Clone OT-Settings git repository
+    git:
+      repo: 'https://github.com/calr0x/OT-Settings.git'
+      dest: /root/OT-Settings
+      force: yes
+
+  - name: Copy config file
     copy:
-      src: ~/OT-DockSucker/data/config.sh
-      dest: /root/OT-DockSucker/data/config.sh
+      src: /root/OT-Settings/config.sh
+      dest: /root/OT-Settings
       owner: root
       group: root
       mode: '0700'

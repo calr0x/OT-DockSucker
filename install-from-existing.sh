@@ -61,14 +61,8 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh"
-cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "source /root/OT-Smoothbrain-Backup/config.sh"
-source /root/OT-Smoothbrain-Backup/config.sh
+echo "source /root/OT-Settings/data/config.sh"
+source /root/OT-Settings/data/config.sh
 
 echo "/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
 SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)

@@ -62,12 +62,6 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh"
-cp /root/OT-DockSucker/data/config.sh /root/OT-Smoothbrain-Backup/config.sh
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
 echo "cd /root"
 cd /root
 if [[ $? -ne 0 ]]; then
