@@ -8,12 +8,12 @@ You need to create a new server using __Ubuntu 18.04__, this will not work on Ub
 ```
 cd
 ```
-\
+
 __Set HOSTNAME to the same hostname as the original docker server was. This is needed for Smoothbrain to identify the correct backup to restore.__
 ```
 hostnamectl set-hostname HOSTNAME
 ```
-\
+
 __Update and git clone__
 ```
 apt update && apt upgrade -y && apt install git -y
@@ -24,24 +24,24 @@ git clone https://github.com/calr0x/OT-DockSucker.git && git clone https://githu
 ```
 cd OT-DockSucker
 ```
-\
+
 __Edit the Smoothbrain config and paste in your correct values:__
 ```
 cp /root/OT-Settngs/config-original.sh /root/OT-Settngs/config.sh
 ```
 nano /root/OT-Settings/config.sh
 ```
-\
+
 when you're done:
 ```
 ctrl+s and ctrl+x
 ```
-\
+
 __Install (might take a while)__
 ```
 ./install-docksucker.sh
 ```
-\
+
 __Install is done!__
 
 \
