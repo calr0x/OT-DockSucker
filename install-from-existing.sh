@@ -61,12 +61,6 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "git clone https://github.com/calr0x/OT-Settings.git"
-git clone https://github.com/calr0x/OT-Settings.git
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
 echo "source /root/OT-Settings/config.sh"
 source /root/OT-Settings/config.sh
 
