@@ -39,7 +39,7 @@
 
   - name: Copy config file
     copy:
-      src: /root/OT-Settings/config.sh
+      src: ~/OT-Settings/config.sh
       dest: /root/OT-Settings
       owner: root
       group: root
