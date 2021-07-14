@@ -19,7 +19,7 @@ __Update and git clone__
 apt update && apt upgrade -y && apt install git -y
 ```
 ```
-git clone https://github.com/calr0x/OT-DockSucker.git
+git clone https://github.com/calr0x/OT-DockSucker.git && git clone https://github.com/calr0x/OT-Settings.git
 ```
 ```
 cd OT-DockSucker
@@ -27,7 +27,7 @@ cd OT-DockSucker
 \
 __Edit the Smoothbrain config and paste in your correct values:__
 ```
-nano data/config.sh
+nano /root/OT-Settings/config.sh
 ```
 \
 when you're done:
