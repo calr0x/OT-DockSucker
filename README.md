@@ -10,28 +10,27 @@ __Before proceeding, you must complete the OT-Settings repository instructions f
 ```
 cd
 ```
-\
+
 __Set HOSTNAME to the same hostname as the original docker server was. This is needed for Smoothbrain to identify the correct backup to restore.__
 ```
 hostnamectl set-hostname HOSTNAME
 ```
-\
+
 __Update and git clone__
 ```
 apt update && apt upgrade -y && apt install git -y
 ```
 ```
-git clone https://github.com/calr0x/OT-DockSucker.git
+git clone https://github.com/calr0x/OT-DockSucker.git && git clone https://github.com/calr0x/OT-Settings.git
 ```
 ```
 cd OT-DockSucker
 ```
-\
 __Install (might take a while)__
 ```
 ./install-from-existing.sh
 ```
-\
+
 __Install is done!__
 
 \
