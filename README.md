@@ -27,6 +27,8 @@ cd OT-DockSucker
 \
 __Edit the Smoothbrain config and paste in your correct values:__
 ```
+cp /root/OT-Settngs/config-original.sh /root/OT-Settngs/config.sh
+```
 nano /root/OT-Settings/config.sh
 ```
 \
