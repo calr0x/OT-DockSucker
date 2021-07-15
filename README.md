@@ -24,6 +24,9 @@ apt update && apt upgrade -y && apt install git -y
 git clone https://github.com/calr0x/OT-DockSucker.git && git clone https://github.com/calr0x/OT-Settings.git
 ```
 ```
+cp OT-Settings/config-example.sh OT-Settings/config.sh && nano OT-Settings/config.sh
+```
+```
 cd OT-DockSucker
 ```
 __Install (might take a while)__
