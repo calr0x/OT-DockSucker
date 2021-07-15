@@ -1,17 +1,17 @@
 # OT-DockSucker
 Convert your OriginTrail Docker node to dockerless.
 
-These steps assume that you have backed up your old node using restic from OT-Smoothbrain-Backup or have a backup restored on the new node's /root/backup folder. 
+__These steps assume that you have backed up your old node using restic from OT-Smoothbrain-Backup or have a backup restored on the new node's /root/backup folder. __
 
 You need to create a new server using __Ubuntu 18.04__, this will not work on Ubuntu 20.04.
 
-__Before proceeding, you must complete the OT-Settings repository instructions first__
+__Before proceeding, you must also complete the OT-Settings repository instructions first__
 
 ```
 cd
 ```
 
-__Set HOSTNAME to the same hostname as the original docker server was. This is needed for Smoothbrain to identify the correct backup to restore.__
+__Set HOSTNAME to the same hostname as the original docker server was. This is needed for Smoothbrain to identify the correct restic backup to restore. (ignore this step if you are not using restic to restore)__
 ```
 hostnamectl set-hostname HOSTNAME
 ```
@@ -21,16 +21,13 @@ __Update and git clone__
 apt update && apt upgrade -y && apt install git -y
 ```
 ```
-git clone https://github.com/calr0x/OT-DockSucker.git && git clone https://github.com/calr0x/OT-Settings.git
-```
-```
-cp OT-Settings/config-example.sh OT-Settings/config.sh && nano OT-Settings/config.sh
-```
+git clone https://github.com/calr0x/OT-DockSucker.git
+
 ```
 cd OT-DockSucker
 ```
 __Install (might take a while)__
-If your backup is from a restic snapshot, run:
+If your backup comes from a restic snapshot, run:
 ```
 ./install-from-existing.sh
 ```
