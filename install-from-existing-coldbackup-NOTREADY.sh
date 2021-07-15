@@ -182,6 +182,10 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw en
 #echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
 
+echo "Setting the logs to have a hard limit of 50 meg. Log deletions/clearing will not be required..."
+sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
+systemctl restart systemd-journald
+
 nano /ot-node/current/.origintrail_noderc
 #echo "Starting the node"
 #systemctl start otnode
