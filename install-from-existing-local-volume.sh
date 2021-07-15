@@ -154,6 +154,10 @@ ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.
 echo "Removing swapfile"
 swapoff /swapfile && rm /swapfile
 
+echo "Setting the logs to have a hard limit of 50 meg. Log deletions/clearing will not be required..."
+sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
+systemctl restart systemd-journald
+
 echo "Installation of OT-Dockerless is complete!"
 #nano /ot-node/current/.origintrail_noderc
 
