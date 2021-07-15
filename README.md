@@ -41,7 +41,7 @@ __Install is done!__
 __EXTRAS__
 \
 \
-__Set maximum journal space to 50MB__
+__Set maximum journal space to 50MB__ (This command is included in all DockSucker installers)
 ```
 sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
 ```
