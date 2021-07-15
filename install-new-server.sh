@@ -96,6 +96,10 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && ufw en
 
 echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 
+echo "Setting the logs to have a hard limit of 50 meg. Log deletions/clearing will not be required..."
+sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
+systemctl restart systemd-journald
+
 echo "Enabling the node to start on server boot"
 systemctl enable otnode
 
