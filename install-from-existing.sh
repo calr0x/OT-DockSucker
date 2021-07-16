@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# This script assumes that:
+# you are running a fresh server on Ubuntu 18.04
+# you have a restic backup ready to restore on your Amazon AWS
+
 VERSION=$(lsb_release -sr)
 
 if [ $VERSION != 18.04 ]; then
@@ -91,11 +95,9 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
-#Commented is used for docker-version nodes
-mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
-
-#mv /root/root/backup/ /root/backup && rm -rf /root/root
+echo "mv /root/root/backup/ /root/backup && rm -rf /root/root"
+#mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
+mv /root/root/backup/ /root/backup && rm -rf /root/root
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -198,6 +200,9 @@ swapoff /swapfile && rm /swapfile
 echo "Setting the logs to have a hard limit of 50 meg. Log deletions/clearing will not be required..."
 sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
 systemctl restart systemd-journald
+
+echo "Your Dockerless otnode is ready to run ! Please very that the hostname on the config is correct with nano /ot-node/current/.origintrail_noderc. 
+Once you are done, run systemctl start otnode to start the node and journalctl -u otnode -f | ccze -A to check the logs"
 
 #nano /ot-node/current/.origintrail_noderc
 
