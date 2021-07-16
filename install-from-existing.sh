@@ -59,7 +59,7 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "rm -rf /root/backup/OT-Smoothbrain-Backup"
+echo "rm -rf /root/OT-Smoothbrain-Backup"
 rm -rf /root/backup/OT-Smoothbrain-Backup
 if [[ $? -ne 0 ]]; then
   exit 1
