@@ -7,7 +7,7 @@ __These steps assume that you have either :__
 1. backed up your old dockerless node using restic from OT-Smoothbrain-Backup or ;
 2. restored a backup on /root/backup ready to go dockerless;
 
-__If none of these apply, please consult the second at the bottom for instructions__
+__If none of these apply, please consult the second section for instructions__
 
 __Before proceeding, you must also complete the OT-Settings repository instructions first__
 
