@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# This script assumes that:
+# you are running a fresh server on Ubuntu 18.04
+# you are running this from /root/OT-DockSucker
+# you want to install otnode without using docker
+
 VERSION=$(lsb_release -sr)
 
 if [ $VERSION != 18.04 ]; then
@@ -13,8 +18,14 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "cd data"
-cd data
+echo "cd"
+cd
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+echo "cd /root/OT-DockSucker/data"
+cd /root/OT-DockSucker/data
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -103,10 +114,12 @@ systemctl restart systemd-journald
 echo "Enabling the node to start on server boot"
 systemctl enable otnode
 
+echo "Your Dockerless otnode is ready to run ! Please configure your otnode with nano /ot-node/current/.origintrail_noderc to continue. 
+Once you are done, run systemctl start otnode to start the node and journalctl -u otnode -f | ccze -A to check the logs"
 #nano /ot-node/current/.origintrail_noderc
 
-echo "Starting the node"
-systemctl start otnode
+#echo "Starting the node"
+#systemctl start otnode
 
-echo "Displaying the logs on startup. Exit using ctrl+c at any time. The node will continue to run."
-journalctl -u otnode -f | ccze -A
+#echo "Displaying the logs on startup. Exit using ctrl+c at any time. The node will continue to run."
+#journalctl -u otnode -f | ccze -A
