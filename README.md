@@ -1,15 +1,19 @@
 # OT-DockSucker
+
+## __Before proceeding, you must complete the OT-Settings repository instructions first__
+```
+git clone https://github.com/calr0x/OT-Settings.git
+```
+
 Convert your OriginTrail Docker node to dockerless.
 
 You need to create a new server using __Ubuntu 18.04__, this will not work on Ubuntu 20.04.
 
-__These steps assume that you have either :__
+__The following steps assume that you have either :__
 1. backed up your old dockerless node using restic from OT-Smoothbrain-Backup or ;
-2. restored a backup on /root/backup ready to go dockerless;
+2. restored a backup on /root/backup ready to go dockerless.
 
-__If none of these apply, please consult the second at the bottom for instructions__
-
-__Before proceeding, you must also complete the OT-Settings repository instructions first__
+__If none of these apply, please consult the next section for instructions__
 
 ```
 cd
@@ -76,7 +80,7 @@ __1. Add a temporary drive__ (instructions below are for Hetzner)
 
 __2. Increase the capacity of your node__
 
-Since you will be nuking your node after the dockerless install, 
+Since you will be nuking your node after the dockerless install, you can just double your current node's storage space, create the backup, then destroy the node once everything is done. For the new server, if you atttempt to restore with the same usual storage capacity as your old node, you might run out of space due to the backup taking up a big chunk of it. That's why I'd suggest VPS providers like Hetzner who allows you to have a removable temporary drive. If you choose another VPS provider, choose one that allows you to downgrade the size of your server, if you don't you will have to upgrade even though dockerless will save you some space. By choosing a provider that allows you do downgrade, once the restore is finished on your new dockerless node, you should have plenty of space to be able to downgrade.
 
 \
 \
