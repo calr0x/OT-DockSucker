@@ -70,8 +70,9 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "source /root/OT-Settings/data/config.sh"
-source /root/OT-Settings/data/config.sh
+echo "source /root/OT-Settings/config.sh"
+source /root/OT-Settings/config.sh
+
 
 echo "/root/OT-Smoothbrain-Backup/restic snapshots --tag coldbackup -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
 SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
@@ -90,6 +91,18 @@ echo "******************************************"
 echo "******************************************"
 echo "******************************************"
 /root/OT-Smoothbrain-Backup/restic restore $SNAPSHOT --target /root
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+echo "cp /root/ot-node/current/.origintrail_noderc /ot-node/current/.origintrail_noderc"
+cp /root/ot-node/current/.origintrail_noderc /ot-node/current/.origintrail_noderc
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+echo "rm -rf /root/ot-node"
+rm -rf /root/ot-node
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -124,12 +137,6 @@ fi
 
 echo "npm run setup"
 npm run setup
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet"
-/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
