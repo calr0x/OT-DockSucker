@@ -58,6 +58,12 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+echo "rm -rf /root/OT-Smoothbrain-Backup"
+rm -rf /root/OT-Smoothbrain-Backup
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
 echo "git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git"
 git clone https://github.com/calr0x/OT-Smoothbrain-Backup.git
 if [[ $? -ne 0 ]]; then
