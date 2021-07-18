@@ -13,7 +13,13 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "cd data"
+echo "cd /root"
+cd /root
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+echo "cd OT-DockSucker/data"
 cd data
 if [[ $? -ne 0 ]]; then
   exit 1
@@ -88,18 +94,6 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
-mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "cp /root/backup/.origintrail_noderc /ot-node/current/"
-cp /root/backup/.origintrail_noderc /ot-node/current
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
 ADDRESS=$(hostname -I | cut -f 1 -d ' ')
 echo "******************************************"
 echo "******************************************"
@@ -130,36 +124,6 @@ fi
 
 echo "/root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet"
 /root/OT-DockSucker/data/update-arango-password.sh /root/.origintrail_noderc/mainnet
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "cd /root/OT-DockSucker/data"
-cd /root/OT-DockSucker/data
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "./restore.sh"
-./restore.sh
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "rm -rf /root/backup/arangodb"
-rm -rf /root/backup/arangodb
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "cp -r /root/backup/* /root/.origintrail_noderc/mainnet/"
-cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "rm -rf /root/backup"
-rm -rf /root/backup
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
