@@ -20,7 +20,7 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "cd OT-DockSucker/data"
-cd data
+cd OT-DockSucker/data
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
