@@ -11,6 +11,7 @@ You need to create a new server using __Ubuntu 18.04__, this will not work on Ub
 
 __The following steps assume that you have either :__
 1. backed up your old dockerless node using restic from OT-Smoothbrain-Backup or ;
+
 2. restored a backup on /root/backup ready to go dockerless.
 
 __If none of these apply, please consult the next section for instructions__
