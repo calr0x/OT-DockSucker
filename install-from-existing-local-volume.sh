@@ -2,9 +2,7 @@
 
 # This script assumes that:
 # you are running a fresh server on Ubuntu 18.04
-# you are running this from directory /root/OT-DockSucker
-# you have a local backup ready to restore /root/backup
-# make sure that the restore files are in /root/backup/ and not /root/backup/2021-07-14....
+# you have a restic backup ready to restore on your Amazon AWS
 
 VERSION=$(lsb_release -sr)
 
@@ -54,6 +52,7 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+#Smoothbrain
 echo "cd /root"
 cd /root
 if [[ $? -ne 0 ]]; then
@@ -72,11 +71,8 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "cd /root"
-cd /root
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
+echo "source /root/OT-Settings/config.sh"
+source /root/OT-Settings/config.sh
 
 echo "cp /root/backup/.origintrail_noderc /ot-node/current/"
 cp /root/backup/.origintrail_noderc /ot-node/current
@@ -95,8 +91,6 @@ echo $ADDRESS >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
-#sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
-#ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 
 if [[ $? -ne 0 ]]; then
   exit 1
@@ -144,6 +138,12 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+echo "rm -rf /root/backup"
+rm -rf /root/backup
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
 echo "cp /root/OT-DockSucker/data/otnode.service /lib/systemd/system"
 cp /root/OT-DockSucker/data/otnode.service /lib/systemd/system
 if [[ $? -ne 0 ]]; then
@@ -159,6 +159,9 @@ fi
 echo "Adding firewall rules 22, 3000, 5278, and 8900, and enabling the firewall"
 ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && yes | ufw enable
 
+#echo "The IP address used to configure .origintral_noderc is $ADDRESS."
+echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
+
 ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 
 echo "Removing swapfile"
@@ -170,6 +173,7 @@ systemctl restart systemd-journald
 
 echo "Your Dockerless otnode is ready to run ! Please very that the hostname on the config is correct with nano /ot-node/current/.origintrail_noderc. 
 Once you are done, run systemctl start otnode to start the node and journalctl -u otnode -f | ccze -A to check the logs"
+
 #nano /ot-node/current/.origintrail_noderc
 
 #echo "Starting the node"
