@@ -101,9 +101,20 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "mv /root/root/backup/ /root/backup && rm -rf /root/root"
-#mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
-mv /root/root/backup/ /root/backup && rm -rf /root/root
+if [ -d /root/root/backup ]; then
+  echo "mv /root/root/backup/ /root/backup && rm -rf /root/root"
+  mv /root/root/backup/ /root/backup && rm -rf /root/root
+  if [[ $? -ne 0 ]]; then
+    exit 1
+  fi
+else
+  echo "mv /root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root"
+  mv /root/root/OT-Smoothbrain-Backup/backup/ /root/backup && rm -rf /root/root
+  if [[ $? -ne 0 ]]; then
+    exit 1
+  fi
+fi
+
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -125,8 +136,6 @@ echo $ADDRESS >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
-#sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
-#ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 
 if [[ $? -ne 0 ]]; then
   exit 1
