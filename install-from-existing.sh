@@ -19,6 +19,9 @@ fi
 
 echo "Temporarily enable 1gig swap file"
 fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
 
 echo "cd data"
 cd data
