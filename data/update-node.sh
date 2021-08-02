@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 systemctl stop otnode
 
 NEW_VERSION=$(curl -sL https://api.github.com/repos/origintrail/ot-node/releases/latest | jq .tag_name)
