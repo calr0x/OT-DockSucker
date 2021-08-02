@@ -77,6 +77,12 @@ fi
 echo "source /root/OT-Settings/config.sh"
 source /root/OT-Settings/config.sh
 
+echo "Checking if local Smoothbrain server is being used and adding backup server fingerprint"
+BACKUP_CHECK=$(cat /root/OT-Settings/config.sh | grep sftp)
+if [[ $BACKUP_CHECK -eq 1 ]]; then
+  ssh-keyscan -H $LOCAL_BACKUP_SERVER >> ~/.ssh/known_hosts
+fi
+
 echo "/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1"
 SNAPSHOT=$(/root/OT-Smoothbrain-Backup/restic snapshots -H $HOSTNAME | grep $HOSTNAME | cut -c1-8 | tail -n 1)
 if [[ $? -ne 0 ]]; then
