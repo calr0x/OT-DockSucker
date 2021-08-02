@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 # This script assumes that:
 # you are running a fresh server on Ubuntu 18.04
 # you have a restic backup ready to restore on your Amazon AWS
@@ -18,9 +18,11 @@ if [[ $? -ne 0 ]]; then
 fi
 
 echo "Temporarily enable 1gig swap file"
-fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
-if [[ $? -ne 0 ]]; then
-  exit 1
+if [[ ! -f /swapfile ]]; then
+  fallocate -l 1G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+  if [[ $? -ne 0 ]]; then
+    exit 1
+  fi
 fi
 
 echo "cd data"
