@@ -23,3 +23,5 @@ cp /ot-node/5.0.4/.env /ot-node/current
 npm install
 
 systemctl start otnode
+
+journalctl -u otnode -f | ccze -A
