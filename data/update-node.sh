@@ -1,5 +1,12 @@
 #!/bin/bash
 
+IS_UPDATED=$(find /ot-node -name 5.1.0 -type d | wc -l)
+
+if [[$IS_UPDATED -eq 1 ]]; then
+  echo "This node is already updated!"
+  exit 1
+fi
+
 systemctl stop otnode
 
 #NEW_VERSION=$(curl -sL https://api.github.com/repos/origintrail/ot-node/releases/latest | jq -r .tag_name)
