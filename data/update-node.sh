@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IS_UPDATED=$(find /ot-node -name 5.1.0 -type d | wc -l)
+IS_UPDATED=$(find /ot-node -name 5.1.0 -type d)
 
 if [[ IS_UPDATED != "" ]]; then
   echo "This node is already updated!"
