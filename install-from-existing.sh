@@ -227,7 +227,7 @@ echo "Setting the logs to have a hard limit of 50 meg. Log deletions/clearing wi
 sed -i 's|#SystemMaxUse=|SystemMaxUse=50M|' /etc/systemd/journald.conf
 systemctl restart systemd-journald
 
-echo "Your Dockerless otnode is ready to run ! Please very that the hostname on the config is correct with nano /ot-node/current/.origintrail_noderc. 
+echo "Your Dockerless otnode is ready to run ! Please verify that the hostname on the config is correct with nano /ot-node/current/.origintrail_noderc. 
 Once you are done, run systemctl start otnode to start the node and journalctl -u otnode -f | ccze -A to check the logs"
 
 #nano /ot-node/current/.origintrail_noderc
