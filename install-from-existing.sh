@@ -2,7 +2,7 @@
 #
 # This script assumes that:
 # you are running a fresh server on Ubuntu 18.04
-# you have a restic backup ready to restore on your Amazon AWS
+# you have a docker cold backup ready to restore /root/backup
 
 VERSION=$(lsb_release -sr)
 
