@@ -39,14 +39,14 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4"
-mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4
+echo "mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.1.0"
+mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.1.0
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current"
-ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
+echo "ln -s /ot-node/5.1.0 /ot-node/current && cd /ot-node/current"
+ln -s /ot-node/5.1.0 /ot-node/current && cd /ot-node/current
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
