@@ -73,7 +73,12 @@ echo $ADDRESS >> dockerless-install-settings
 echo "******************************************"
 echo "******************************************"
 echo "******************************************"
-sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
+#sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
+
+ADDRESS=$(hostname -I | cut -f 1 -d ' ')
+cat /ot-node/current/.origintrail_noderc | jq ".network.hostname = \"$ADDRESS\"" >> /ot-node/current/origintrail_noderc
+mv /ot-node/current/origintrail_noderc /ot-node/current/.origintrail_noderc
+
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
