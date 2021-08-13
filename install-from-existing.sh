@@ -218,7 +218,10 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && yes | 
 #echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
 
-ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
+#ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
+ADDRESS=$(hostname -I | cut -f 1 -d ' ')
+cat /ot-node/current/.origintrail_noderc | jq ".network.hostname = \"$ADDRESS\"" >> /ot-node/current/origintrail_noderc
+mv /ot-node/current/origintrail_noderc /ot-node/current/.origintrail_noderc
 
 echo "Removing swapfile"
 swapoff /swapfile && rm /swapfile
