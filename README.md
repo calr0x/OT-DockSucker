@@ -55,7 +55,7 @@ The backup process will then output an error message about failing to upload one
 
 ### __You have 2 options:__
 __1. Add a temporary drive__ (instructions below are for Hetzner) 
-1. Add a temporary volume and mount it on your current node. The volume should be at least the size of your current disk capacity (Hetzner have this option)__
+1. Add a temporary volume and mount it on your current node. The volume should be at least the size of your current disk capacity (Hetzner have this option)
 2. Format the volume using ext4 following Hetzner's script (change 1111111111 to your drive's assigned number):
     - sudo mkfs.ext4 /dev/disk/by-id/scsi-0HC_Volume_1111111111
 3. Locate your backup directory using OriginTrail's backup script:
