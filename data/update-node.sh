@@ -12,7 +12,7 @@ systemctl stop otnode
 
 cd /ot-node/
 
-git clone https://github.com/OriginTrail/ot-node.git
+git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
 
 mv /ot-node/ot-node /ot-node/5.1.0
 
