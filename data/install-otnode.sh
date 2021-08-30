@@ -1,6 +1,6 @@
 #!/bin/bash
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt update && sudo apt-get install -y nodejs libpq-dev sqlite3 python3-pip git build-essential gcc python-dev
 
 db=arangodb
 
@@ -53,17 +53,11 @@ if [ $db = "neo4j" ]; then
   sudo apt install neo4j
 fi
 
-sudo apt-get install sqlite3
-
 export LC_ALL=C
-
-sudo apt-get install -y python3-pip
 
 sudo pip3 install python-arango
 sudo pip3 install xmljson
 sudo pip3 install python-dotenv
-
-sudo apt-get install git build-essential gcc python-dev
 
 git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
 cd ot-node && npm install
