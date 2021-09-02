@@ -5,14 +5,15 @@
 # you have a restic backup ready to restore on your Amazon AWS
 
 VERSION=$(lsb_release -sr)
+NEW_VERSION=$(curl -sL https://api.github.com/repos/origintrail/ot-node/releases/latest | jq -r .tag_name | sed 's|v||')
 
 if [ $VERSION != 18.04 ]; then
   echo "OT-DockSucker requires Ubuntu 18.04. Destroy this VPS and remake using Ubuntu 18.04."
   exit 1
 fi
 
-echo "apt install -y build-essential gcc python-dev ccze"
-apt install -y build-essential gcc python-dev ccze
+echo "apt install -y build-essential gcc python-dev ccze jq"
+apt install -y build-essential gcc python-dev ccze jq
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -26,6 +27,10 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+if [[ -d ot-node ]]; then
+  rm -rf ot-node
+fi
+
 echo "./install-otnode.sh"
 ./install-otnode.sh
 
@@ -35,14 +40,16 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4"
-mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/5.0.4
+
+
+echo "mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/$NEW_VERSION"
+mkdir -p /ot-node && mv /root/OT-DockSucker/data/ot-node/ /ot-node/$NEW_VERSION
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
-echo "ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current"
-ln -s /ot-node/5.0.4 /ot-node/current && cd /ot-node/current
+echo "ln -s /ot-node/$NEW_VERSION /ot-node/current && cd /ot-node/current"
+ln -s /ot-node/$NEW_VERSION /ot-node/current && cd /ot-node/current
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -73,12 +80,6 @@ echo "******************************************"
 echo "******************************************"
 echo "******************************************"
 
-if [[ $? -ne 0 ]]; then
-  exit 1
-fi
-
-echo "cd /ot-node/current"
-cd /ot-node/current
 if [[ $? -ne 0 ]]; then
   exit 1
 fi
@@ -143,7 +144,6 @@ ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && yes | 
 #echo "The IP address used to configure .origintral_noderc is $ADDRESS."
 echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
 
-#ADDRESS=$(hostname -I | cut -f 1 -d ' ');sed -i -E 's|"hostname": "[[:digit:]]+.[[:digit:]]+.[[:digit:]]+.[[:digit:]]+",|"hostname": "'"$ADDRESS"'",|g' /ot-node/current/.origintrail_noderc
 ADDRESS=$(hostname -I | cut -f 1 -d ' ')
 cat /ot-node/current/.origintrail_noderc | jq ".network.hostname = \"$ADDRESS\"" >> /ot-node/current/origintrail_noderc
 mv /ot-node/current/origintrail_noderc /ot-node/current/.origintrail_noderc
@@ -157,8 +157,6 @@ systemctl restart systemd-journald
 
 echo "Your Dockerless otnode is ready to run ! Please very that the hostname on the config is correct with nano /ot-node/current/.origintrail_noderc. 
 Once you are done, run systemctl start otnode to start the node and journalctl -u otnode -f | ccze -A to check the logs"
-
-#nano /ot-node/current/.origintrail_noderc
 
 #echo "Starting the node"
 #systemctl start otnode
