@@ -152,9 +152,6 @@ fi
 echo "Adding firewall rules 22, 3000, 5278, and 8900, and enabling the firewall"
 ufw allow 22/tcp && ufw allow 3000 && ufw allow 5278 && ufw allow 8900 && yes | ufw enable
 
-#echo "The IP address used to configure .origintral_noderc is $ADDRESS."
-echo "The SmoothBrain snapshot used to restore the data on this node was $SNAPSHOT."
-
 ADDRESS=$(hostname -I | cut -f 1 -d ' ')
 cat /ot-node/current/.origintrail_noderc | jq ".network.hostname = \"$ADDRESS\"" >> /ot-node/current/origintrail_noderc
 mv /ot-node/current/origintrail_noderc /ot-node/current/.origintrail_noderc
