@@ -114,6 +114,17 @@ if [[ $? -ne 0 ]]; then
   exit 1
 fi
 
+echo "rm -rf /root/.origintrail_noderc/mainnet/system.db"
+rm -rf /root/.origintrail_noderc/mainnet/system.db
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
+
+echo "rm -rf /root/.origintrail_noderc/mainnet/migrations"
+rm -rf /root/.origintrail_noderc/mainnet/migrations
+if [[ $? -ne 0 ]]; then
+  exit 1
+fi
 echo "cp -r /root/backup/* /root/.origintrail_noderc/mainnet/"
 cp -r /root/backup/* /root/.origintrail_noderc/mainnet/
 if [[ $? -ne 0 ]]; then
