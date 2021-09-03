@@ -8,6 +8,16 @@ if [[ -d "/ot-node/$NEW_VERSION" ]]; then
   exit 2
 fi
 
+read -r -p "Updating requires having logged to this server as root. You CANNOT sudo into root due to OT bugs. Compiling will fail if the username you use to login is not root. Do you want to proceed? [y/N] " response
+case "$response" in
+    [yY][eE][sS]|[yY]) 
+        echo "Proceeding with updating.."
+        ;;
+    *)
+        exit 0
+        ;;
+esac
+
 cd /ot-node/
 
 git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
