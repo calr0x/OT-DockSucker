@@ -29,12 +29,12 @@ rm /ot-node/current
 
 ln -s /ot-node/$NEW_VERSION /ot-node/current
 
-cd current
-
 cp /ot-node/$OLD_VERSION/.origintrail_noderc /ot-node/current/
 cp /ot-node/$OLD_VERSION/.env /ot-node/current
 
+
 echo "Compiling the new node"
+cd $NEW_VERSION
 npm install
 
 echo "Restarting the node to use the new version"
