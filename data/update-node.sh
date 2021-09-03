@@ -20,6 +20,7 @@ esac
 
 cd /ot-node/
 
+echo "Downloading and preparing ot-node"
 git clone -b release/mainnet https://github.com/OriginTrail/ot-node.git
 
 mv /ot-node/ot-node /ot-node/$NEW_VERSION
@@ -33,8 +34,11 @@ cd current
 cp /ot-node/$OLD_VERSION/.origintrail_noderc /ot-node/current/
 cp /ot-node/$OLD_VERSION/.env /ot-node/current
 
+echo "Compiling the new node"
 npm install
 
+echo "Restarting the node to use the new version"
 systemctl restart otnode
 
+echo "Opening logs to verify startup was successful"
 journalctl -u otnode -f | ccze -A
