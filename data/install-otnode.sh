@@ -1,6 +1,6 @@
 #!/bin/bash
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt update && sudo apt-get install -y nodejs libpq-dev sqlite3 python3-pip git build-essential gcc python-dev
+sudo apt update && sudo apt-get install -y nodejs libpq-dev sqlite3 python3-pip git build-essential gcc python-dev libpq-dev
 
 db=arangodb
 
